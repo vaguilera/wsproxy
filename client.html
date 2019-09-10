@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+
+<head>
+  <title>Test Websocket connection</title>
+</head>
+
+<body>
+    <span>Test Websocket connection</span>
+  <ul>
+    <li><button id="closebtn">Close Conn</button></li>
+    <li><button id="sendbtn">Send Data</button></li>
+  </ul>
+  
+  
+  
+  <script>
+
+    var ws = new WebSocket('ws://127.0.0.1:1201');
+
+    document.getElementById("closebtn").addEventListener('click', ev => {
+      ws.close();
+    });
+
+    document.getElementById("sendbtn").addEventListener('click', ev => {
+      ws.send("Potato")
+    });
+
+    ws.onopen = function () {
+      ws.send("My test message")
+    };
+
+    ws.onclose = function (evt) {
+      console.log("Connection closed");
+      ws = null;
+    }
+
+    // Log errors
+    ws.onerror = function (error) {
+      console.log('WebSocket Error ' + error);
+    };
+
+    // Log messages from the server
+    ws.onmessage = function (e) {
+        console.log(e.data);
+    };
+
+
+  </script>
+</body>
+
+</html>
