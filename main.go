@@ -23,7 +23,7 @@ func main() {
 	localPort := flag.Int("p", 8080, "Listen port")
 	remoteHost := flag.String("r", "", "TCP server address")
 	remotePort := flag.Int("P", 21000, "TCP server Port")
-	textMode := flag.Bool("t", true, "Data encoding (binary/text)")
+	textMode := flag.Bool("t", true, "Text encoding (binary/text)")
 	showHelp := flag.Bool("h", false, "Show help")
 
 	flag.Parse()
